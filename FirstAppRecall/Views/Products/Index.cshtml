@@ -1,0 +1,128 @@
+﻿@model List<FirstAppRecall.Models.Product>
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+<a href="/products/create">Create Product</a>
+
+<form class="form-inline" action="/products/index">
+    <label for="Search">Search:</label>
+    <input type="text" class="form-control" id="Search" name="search" value="@ViewBag.search"/>
+    <button class="btn btn-primary" type="submit">GO</button>
+</form>
+<table class="table">
+    <tr class="table-secondary">
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/products/index?sortcolumn=ProductID&IconClass=fa-sort-asc">Product ID</a>
+                if (ViewBag.SortColumn == "ProductID")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+                <a href="/products/index?sortcolumn=ProductID&IconClass=fa-sort-desc">Product ID</a>
+                if (ViewBag.SortColumn == "ProductID")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+        </th>
+        
+        <th style="width:30%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/products/index?sortcolumn=ProductName&IconClass=fa-sort-asc">Product Name</a>
+                if (ViewBag.SortColumn == "ProductName")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+                <a href="/products/index?sortcolumn=ProductName&IconClass=fa-sort-desc">Product Name</a>
+                if (ViewBag.SortColumn == "ProductName")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        
+        <th style="width:5%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/products/index?sortcolumn=Price&IconClass=fa-sort-asc">Price</a>
+                if (ViewBag.SortColumn == "Price")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+                <a href="/products/index?sortcolumn=Price&IconClass=fa-sort-desc">Price</a>
+                if (ViewBag.SortColumn == "Price")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        
+        <th style="width:10%">
+        <a>Date of Purchase</a>
+        </th>0
+        
+        <th style="width:10%">
+        <a>Avaiability Status</a>
+        </th>
+       
+        <th style="width:10%">
+        <a>Category ID</a>
+        </th>
+       
+        <th style="width:10%">
+        <a>Brand ID</a>
+       
+        </th>
+        <th style="width:5%">Active</th>
+        <th style="width:10%"></th>
+        <th style="width:10%"></th> 
+        <th style="width:10%"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.ProductID</td>
+    <td>@item.ProductName</td>
+    <td>@item.Price.Value.ToString("C")</td>
+    <td>@item.DateOfPurchase</td>
+    <td>@item.AvailabilityStatus</td>
+    <td>@item.Category.CategoryName</td>
+    <td>@item.Brand.BrandName</td>
+    @if (item.Active == true)
+    {
+    <td>Yes</td>
+    }
+    else
+    {
+    <td>No</td>
+    }
+    <td>
+        <a href="/products/details/@item.ProductID">Details</a>
+    </td>
+    <td>
+        <a href="/products/edit/@item.ProductID">Edit</a>
+    </td>
+    <td>
+        <a href="/products/delete/@item.ProductID">Delete</a>
+    </td>
+</tr>
+    }
+</table>
