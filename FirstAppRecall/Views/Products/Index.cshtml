@@ -75,20 +75,84 @@
         </th>
         
         <th style="width:10%">
-        <a>Date of Purchase</a>
-        </th>0
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+            <a href="/products/index?sortcolumn=DateOfPurchase&IconClass=fa-sort-asc">DateOfPurchase</a>
+                if (ViewBag.SortColumn == "DateOfPurchase")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+            <a href="/products/index?sortcolumn=DateOfPurchase&IconClass=fa-sort-desc">DateOfPurchase</a>
+                if (ViewBag.SortColumn == "DateOfPurchase")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+        </th>
         
         <th style="width:10%">
-        <a>Avaiability Status</a>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+            <a href="/products/index?sortcolumn=AvailabilityStatus&IconClass=fa-sort-asc">AvailabilityStatus</a>
+                if (ViewBag.SortColumn == "AvailabilityStatus")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+        <a href="/products/index?sortcolumn=AvailabilityStatus&IconClass=fa-sort-desc">AvailabilityStatus</a>
+                if (ViewBag.SortColumn == "AvailabilityStatus")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
         </th>
        
         <th style="width:10%">
-        <a>Category ID</a>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+            <a href="/products/index?sortcolumn=CategoryID&IconClass=fa-sort-asc">CategoryID</a>
+                if (ViewBag.SortColumn == "CategoryID")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+        <a href="/products/index?sortcolumn=CategoryID&IconClass=fa-sort-desc">CategoryID</a>
+                if (ViewBag.SortColumn == "CategoryID")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
         </th>
        
         <th style="width:10%">
-        <a>Brand ID</a>
-       
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+            <a href="/products/index?sortcolumn=BrandID&IconClass=fa-sort-asc">BrandID</a>
+                if (ViewBag.SortColumn == "BrandID")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
+            else
+            {
+        <a href="/products/index?sortcolumn=BrandID&IconClass=fa-sort-desc">BrandID</a>
+                if (ViewBag.SortColumn == "BrandID")
+                {
+                    <i class="@ViewBag.IconClass"></i>
+                }
+            }
+
         </th>
         <th style="width:5%">Active</th>
         <th style="width:10%"></th>
