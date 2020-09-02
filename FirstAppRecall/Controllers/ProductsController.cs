@@ -10,14 +10,16 @@ namespace FirstAppRecall.Controllers
 {
     public class ProductsController : Controller
     {
-        EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+        CompanyDBContext db = new CompanyDBContext();
         // GET: Products
-        public ActionResult Index(string search="",string SortColumn="ProductName",string IconClass="fa-sort-asc")
+        public ActionResult Index(string search="",string SortColumn="ProductName",string IconClass="fa-sort-asc",int PageNo=1)
         {
             List<Product> products = db.Products.Where(s=>s.ProductName.Contains(search)).ToList();
             ViewBag.search = search;
             ViewBag.IconClass = IconClass;
             ViewBag.SortColumn = SortColumn;
+
+            //Sorting
             if (ViewBag.SortColumn == "ProductID")
             {
                 if (ViewBag.IconClass == "fa-sort-asc")
@@ -67,6 +69,8 @@ namespace FirstAppRecall.Controllers
                 else
                     products = products.OrderByDescending(s => s.BrandID).ToList();
             }
+
+           
             return View(products);
 
             
@@ -86,16 +90,32 @@ namespace FirstAppRecall.Controllers
             List<Brand> brands = db.Brands.ToList();
             ViewBag.Brand = brands;
             return View();
+
         }
 
         [HttpPost]
         public ActionResult Create(Product product)
 
         {
-            db.Products.Add(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+
+                List<Category> categories = db.Categories.ToList();
+                ViewBag.Cat = categories;
+                List<Brand> brands = db.Brands.ToList();
+                ViewBag.Brand = brands;
+                return View();
+            }
         }
+
+        
 
         public ActionResult Edit(int id)
         {
@@ -115,6 +135,7 @@ namespace FirstAppRecall.Controllers
             existingProduct.BrandID = p.BrandID;
             existingProduct.Active = p.Active;
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

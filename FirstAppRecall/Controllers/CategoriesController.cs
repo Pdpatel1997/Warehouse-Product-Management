@@ -10,7 +10,7 @@ namespace FirstAppRecall.Controllers
     {
         // GET: Categories
 
-        EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+        CompanyDBContext db = new CompanyDBContext();
         public ActionResult Index()
         {
             List<Category> categories = db.Categories.ToList();

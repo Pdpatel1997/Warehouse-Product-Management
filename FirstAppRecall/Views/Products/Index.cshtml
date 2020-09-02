@@ -33,7 +33,7 @@
             }
 
         </th>
-        
+
         <th style="width:30%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
@@ -53,7 +53,7 @@
                 }
             }
         </th>
-        
+
         <th style="width:5%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
@@ -73,11 +73,11 @@
                 }
             }
         </th>
-        
+
         <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
-            <a href="/products/index?sortcolumn=DateOfPurchase&IconClass=fa-sort-asc">DateOfPurchase</a>
+                <a href="/products/index?sortcolumn=DateOfPurchase&IconClass=fa-sort-asc">DateOfPurchase</a>
                 if (ViewBag.SortColumn == "DateOfPurchase")
                 {
                     <i class="@ViewBag.IconClass"></i>
@@ -86,18 +86,18 @@
 
             else
             {
-            <a href="/products/index?sortcolumn=DateOfPurchase&IconClass=fa-sort-desc">DateOfPurchase</a>
+                <a href="/products/index?sortcolumn=DateOfPurchase&IconClass=fa-sort-desc">DateOfPurchase</a>
                 if (ViewBag.SortColumn == "DateOfPurchase")
                 {
                     <i class="@ViewBag.IconClass"></i>
                 }
             }
         </th>
-        
+
         <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
-            <a href="/products/index?sortcolumn=AvailabilityStatus&IconClass=fa-sort-asc">AvailabilityStatus</a>
+                <a href="/products/index?sortcolumn=AvailabilityStatus&IconClass=fa-sort-asc">AvailabilityStatus</a>
                 if (ViewBag.SortColumn == "AvailabilityStatus")
                 {
                     <i class="@ViewBag.IconClass"></i>
@@ -106,18 +106,18 @@
 
             else
             {
-        <a href="/products/index?sortcolumn=AvailabilityStatus&IconClass=fa-sort-desc">AvailabilityStatus</a>
+                <a href="/products/index?sortcolumn=AvailabilityStatus&IconClass=fa-sort-desc">AvailabilityStatus</a>
                 if (ViewBag.SortColumn == "AvailabilityStatus")
                 {
                     <i class="@ViewBag.IconClass"></i>
                 }
             }
         </th>
-       
+
         <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
-            <a href="/products/index?sortcolumn=CategoryID&IconClass=fa-sort-asc">CategoryID</a>
+                <a href="/products/index?sortcolumn=CategoryID&IconClass=fa-sort-asc">CategoryID</a>
                 if (ViewBag.SortColumn == "CategoryID")
                 {
                     <i class="@ViewBag.IconClass"></i>
@@ -126,18 +126,18 @@
 
             else
             {
-        <a href="/products/index?sortcolumn=CategoryID&IconClass=fa-sort-desc">CategoryID</a>
+                <a href="/products/index?sortcolumn=CategoryID&IconClass=fa-sort-desc">CategoryID</a>
                 if (ViewBag.SortColumn == "CategoryID")
                 {
                     <i class="@ViewBag.IconClass"></i>
                 }
             }
         </th>
-       
+
         <th style="width:10%">
             @if (ViewBag.IconClass == "fa-sort-desc")
             {
-            <a href="/products/index?sortcolumn=BrandID&IconClass=fa-sort-asc">BrandID</a>
+                <a href="/products/index?sortcolumn=BrandID&IconClass=fa-sort-asc">BrandID</a>
                 if (ViewBag.SortColumn == "BrandID")
                 {
                     <i class="@ViewBag.IconClass"></i>
@@ -146,7 +146,7 @@
 
             else
             {
-        <a href="/products/index?sortcolumn=BrandID&IconClass=fa-sort-desc">BrandID</a>
+                <a href="/products/index?sortcolumn=BrandID&IconClass=fa-sort-desc">BrandID</a>
                 if (ViewBag.SortColumn == "BrandID")
                 {
                     <i class="@ViewBag.IconClass"></i>
@@ -156,37 +156,40 @@
         </th>
         <th style="width:5%">Active</th>
         <th style="width:10%"></th>
-        <th style="width:10%"></th> 
+        <th style="width:10%"></th>
         <th style="width:10%"></th>
     </tr>
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>@item.ProductID</td>
-    <td>@item.ProductName</td>
-    <td>@item.Price.Value.ToString("C")</td>
-    <td>@item.DateOfPurchase</td>
-    <td>@item.AvailabilityStatus</td>
-    <td>@item.Category.CategoryName</td>
-    <td>@item.Brand.BrandName</td>
-    @if (item.Active == true)
-    {
-    <td>Yes</td>
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.Price.Value.ToString("C")</td>
+            <td>@item.DateOfPurchase</td>
+            <td>@item.AvailabilityStatus</td>
+            <td>@item.Category.CategoryName</td>
+            <td>@item.Brand.BrandName</td>
+            @if (item.Active == true)
+            {
+                <td>Yes</td>
+            }
+            else
+            {
+                <td>No</td>
+            }
+            <td>
+                <a href="/products/details/@item.ProductID">Details</a>|
+            </td>
+            <td>
+                <a href="/products/edit/@item.ProductID">Edit</a>|
+            </td>
+            <td>
+                <a href="/products/delete/@item.ProductID">Delete</a>|
+            </td>
+        </tr>
+
+
     }
-    else
-    {
-    <td>No</td>
-    }
-    <td>
-        <a href="/products/details/@item.ProductID">Details</a>
-    </td>
-    <td>
-        <a href="/products/edit/@item.ProductID">Edit</a>
-    </td>
-    <td>
-        <a href="/products/delete/@item.ProductID">Delete</a>
-    </td>
-</tr>
-    }
+  
 </table>

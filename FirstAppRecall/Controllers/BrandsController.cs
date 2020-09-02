@@ -8,7 +8,7 @@ namespace FirstAppRecall.Controllers
 {
     public class BrandsController : Controller
     {
-        EFDBFirstDatabaseEntities db = new EFDBFirstDatabaseEntities();
+        CompanyDBContext db = new CompanyDBContext();
         // GET: Brands
         public ActionResult Index()
         {
